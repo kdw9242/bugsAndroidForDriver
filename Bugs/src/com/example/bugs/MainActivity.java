@@ -1,16 +1,22 @@
 package com.example.bugs;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener, AnimationListener {
+	
+	private RelativeLayout playListLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +61,45 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		case R.id.button7 :
 		case R.id.button8 :
 		case R.id.button9 :
-			i = new Intent(MainActivity.this, PlayListActivity.class);
-			startActivity(i);
-			break;
+//			i = new Intent(MainActivity.this, PlayListActivity.class);
+//			startActivity(i);
+//			break;
+            Context context = this;
+            Animation anim;
+            anim = AnimationUtils.loadAnimation(context, R.anim.push_left_out);
+//            if (!menuOut) {
+//                menu.setVisibility(View.VISIBLE);
+//                ViewUtils.printView("menu", menu);
+//                anim = AnimationUtils.loadAnimation(context, R.anim.push_right_in);
+//            } else {
+//                anim = AnimationUtils.loadAnimation(context, R.anim.push_left_out);
+//            }
+            anim.setAnimationListener(this);
+            playListLayout = (RelativeLayout)findViewById(R.id.playlistlayout);
+            View playList = playListLayout.findViewById(R.id.playlistlayout);
+            playList.startAnimation(anim);
 		}
+	}
+
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onAnimationRepeat(Animation animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		// TODO Auto-generated method stub
+		
 	}
     
 }
