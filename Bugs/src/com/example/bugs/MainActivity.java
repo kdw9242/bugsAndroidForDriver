@@ -75,9 +75,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Anim
 //                anim = AnimationUtils.loadAnimation(context, R.anim.push_left_out);
 //            }
             anim.setAnimationListener(this);
+            setContentView(R.layout.activity_play_list);
             playListLayout = (RelativeLayout)findViewById(R.id.playlistlayout);
             View playList = playListLayout.findViewById(R.id.playlistlayout);
             playList.startAnimation(anim);
+            setContentView(R.layout.activity_main);
 		}
 	}
 
