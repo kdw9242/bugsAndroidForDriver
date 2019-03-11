@@ -1,0 +1,5 @@
+mvn sonar:sonar \
+  -Dsonar.projectKey=kdw9242_bugsAndroidForDriver \
+  -Dsonar.organization=kdw9242-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=eb7e2009a84218d0bc44ace78526736fb9602e15
